@@ -76,3 +76,5 @@ end
 
 gem 'devise'
 gem "bulma-rails", "~> 0.9.3"
+
+gem 'omniauth-facebook'
