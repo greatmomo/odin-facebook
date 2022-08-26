@@ -78,3 +78,4 @@ gem 'devise'
 gem "bulma-rails", "~> 0.9.3"
 
 gem 'omniauth-facebook'
+gem "omniauth-rails_csrf_protection"
