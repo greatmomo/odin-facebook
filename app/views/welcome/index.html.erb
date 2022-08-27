@@ -4,7 +4,14 @@
       <div class="box">
         <h1 class="title">Hello World</h1>
         <div class="content">The time is now: <%= Time.now %></div>
-        <%= button_to "Register with Facebook", user_facebook_omniauth_authorize_path %>
+        <%= link_to user_facebook_omniauth_authorize_path do %>
+          <a class="button is-medium is-facebook has-background-info has-text-white">
+            <span class="icon">
+              <i class="fab fa-facebook"></i>
+            </span>
+            <span>Login with Facebook</span>
+          </a>
+        <% end %>
       </div>
     </div>
   </div>
