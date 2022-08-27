@@ -79,3 +79,4 @@ gem "bulma-rails", "~> 0.9.3"
 
 gem 'omniauth-facebook'
 gem "omniauth-rails_csrf_protection"
+gem "font-awesome-sass", "~> 6.1.2"
