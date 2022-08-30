@@ -35,9 +35,7 @@
               <a class="button is-primary">
                 <strong>Sign up</strong>
               </a>
-              <a class="button is-light">
-                Log in
-              </a>
+              <%= button_to "logout", destroy_user_session_path, method: :delete, class:"button is-light" %>
             </div>
           </div>
           <% end %>
