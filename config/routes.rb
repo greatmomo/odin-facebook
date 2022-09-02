@@ -5,4 +5,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "welcome#index"
+
+  namespace :user do
+    root :to => "users#index"
+  end
 end
