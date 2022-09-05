@@ -1,11 +1,32 @@
 <section class="section">
   <div class="container">
-    <div class="columns">
-      <% if user_signed_in? %>
-        <%= render 'feed' %>
-      <% else %>
-        <h1>How did you get here without being logged in!?</h1>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <%= render 'feed' %>
+    <% else %>
+      <div class="hero is-fullheight">
+        <div class="hero-body has-text-centered">
+          <div class="container is-max-desktop">
+            <div class="box">
+              <h1 class="title">Login to Momo's Odin Facebook!</h1>
+              <div class="content">The time is now: <%= Time.now %></div>
+              <div class="column is-half is-offset-one-quarter">
+                <%= button_to user_facebook_omniauth_authorize_path, class:"button is-medium is-facebook has-background-info has-text-white is-fullwidth" do %>
+                  <span class="icon">
+                    <i class="fab fa-facebook"></i>
+                  </span>
+                  <span>Login with Facebook</span>
+                <% end %>
+                <%= button_to user_github_omniauth_authorize_path, class:"button is-medium is-facebook has-background-dark has-text-white is-fullwidth" do %>
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Login with Github</span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </section>
