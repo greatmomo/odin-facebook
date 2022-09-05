@@ -9,12 +9,20 @@
             <div class="box">
               <h1 class="title">Hello World</h1>
               <div class="content">The time is now: <%= Time.now %></div>
-              <%= button_to user_facebook_omniauth_authorize_path, class:"button is-medium is-facebook has-background-info has-text-white" do %>
-                <span class="icon">
-                  <i class="fab fa-facebook"></i>
-                </span>
-                <span>Login with Facebook</span>
-              <% end %>
+              <div class="column is-half is-offset-one-quarter">
+                <%= button_to user_facebook_omniauth_authorize_path, class:"button is-medium is-facebook has-background-info has-text-white is-fullwidth" do %>
+                  <span class="icon">
+                    <i class="fab fa-facebook"></i>
+                  </span>
+                  <span>Login with Facebook</span>
+                <% end %>
+                <%= button_to user_github_omniauth_authorize_path, class:"button is-medium is-facebook has-background-dark has-text-white is-fullwidth" do %>
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Login with Github</span>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

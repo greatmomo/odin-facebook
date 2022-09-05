@@ -77,6 +77,9 @@ end
 gem 'devise'
 gem "bulma-rails", "~> 0.9.3"
 
+gem 'omniauth-oauth2' , '~> 1.3.1'
+
+gem 'omniauth-github'
 gem 'omniauth-facebook'
-gem "omniauth-rails_csrf_protection"
+
 gem "font-awesome-sass", "~> 6.1.2"
