@@ -10,27 +10,9 @@
               <h1 class="title">Login to Momo's Odin Facebook!</h1>
               <div class="content">The time is now: <%= Time.now %></div>
 
-              <div class="column">
-                <p class="control">
-                  <%= link_to 'Sign In', new_user_session_path, class: "button is-info" %>
-                </p>
-                <%= render :partial => 'devise/login' %>
-              </div>
+              <%= render :partial => 'devise/login' %>
 
-              <div class="column is-half is-offset-one-quarter">
-                <%= button_to user_facebook_omniauth_authorize_path, class:"button is-medium is-facebook has-background-info has-text-white is-fullwidth" do %>
-                  <span class="icon">
-                    <i class="fab fa-facebook"></i>
-                  </span>
-                  <span>Login with Facebook</span>
-                <% end %>
-                <%# <%= button_to user_github_omniauth_authorize_path, class:"button is-medium is-facebook has-background-dark has-text-white is-fullwidth" do 
-                  <span class="icon">
-                    <i class="fab fa-github"></i>
-                  </span>
-                  <span>Login with Github</span>
-                <% end %>
-              </div>
+              
             </div>
           </div>
         </div>
