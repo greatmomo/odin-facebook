@@ -10,11 +10,11 @@
               <h1 class="title">Login to Momo's Odin Facebook!</h1>
               <div class="content">The time is now: <%= Time.now %></div>
 
-              <div class="column is-half is-offset-one-quarter">
+              <div class="column">
                 <p class="control">
                   <%= link_to 'Sign In', new_user_session_path, class: "button is-info" %>
                 </p>
-                <%# <%= render :partial => 'devise/login' %>
+                <%= render :partial => 'devise/login' %>
               </div>
 
               <div class="column is-half is-offset-one-quarter">
