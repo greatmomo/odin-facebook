@@ -1,3 +1,8 @@
 <%# loop across all users and show them with variable friend request buttons %>
 
-<h1>Friend Requests list here!</h1>
+<ul>
+  <% @users.each do |user| %>
+    <%# <li><%= user.name </li> %>
+    <h1>Friend Requests list here!</h1>
+  <% end %>
+</ul>

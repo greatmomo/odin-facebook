@@ -32,7 +32,7 @@
         <%# Make this whole thing only available if logged in! %>
           <div class="navbar-item">
             <div class="buttons">
-              <%= button_to "find friends", get_users_path, class:"button is-primary" %>
+              <%= link_to "find friends", users_path, class:"button is-primary" %>
               <%= button_to "logout", destroy_user_session_path, method: :delete, class:"button is-light" %>
             </div>
           </div>
