@@ -9,6 +9,8 @@
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
+        <%= f.input :provider, :input_html => { :value => "Momo App" }, wrapper_html: { class: 'is-hidden' } %>
+
         <div class="field">
           <div class="control">
             <%= f.input :email,
