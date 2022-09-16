@@ -16,4 +16,10 @@ class User < ApplicationRecord
   end
 
   has_many :posts
+
+  # belongs_to :requester, class_name: :User
+  # belongs_to :receiver, class_name: :User
+
+  has_many :friend_requests_as_requester, foreign_key: :requester_id, class_name: :FriendRequest
+  has_many :friend_requests_as_receiver, foreign_key: :receiver_id, class_name: :FriendRequest
 end
