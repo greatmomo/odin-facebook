@@ -1,19 +1,24 @@
 <%# loop across all users and show them with variable friend request buttons %>
 
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      name: <%= user.name %>
-      <%# Show the correct icon based on friend request status %>
-      <span class="icon">
-			  <i class="fa-solid fa-user-plus"></i>
-      </span>
-      <span class="icon">
-        <i class="fa-solid fa-user-check"></i>
-      </span>
-      <span class="icon">
-        <i class="fa-solid fa-clock"></i>
-		  </span>
-    </li>
-  <% end %>
-</ul>
+<div class="column is-2 is-offset-5">
+  <h2 class="title is-3">Friends</h2>
+  <div class="box">
+    <ul>
+      <% @users.each do |user| %>
+        <li>
+          <%= user.name %>
+          <%# Show the correct icon based on friend request status %>
+          <span class="icon">
+            <i class="fa-solid fa-user-plus"></i>
+          </span>
+          <span class="icon">
+            <i class="fa-solid fa-user-check"></i>
+          </span>
+          <span class="icon">
+            <i class="fa-solid fa-clock"></i>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
