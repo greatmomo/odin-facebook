@@ -3,6 +3,8 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  # this logic seems to be javascript, needs to be modified to work with rails
+
   const postFriendRequest = (target) => {
     const u1 = currentUser
     const u2 = target
