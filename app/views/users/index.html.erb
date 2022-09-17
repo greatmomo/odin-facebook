@@ -5,19 +5,24 @@
   <div class="box">
     <ul>
       <% @users.each do |user| %>
-        <li>
-          <%= user.name %>
-          <%# Show the correct icon based on friend request status %>
-          <span class="icon">
-            <i class="fa-solid fa-user-plus"></i>
-          </span>
-          <span class="icon">
-            <i class="fa-solid fa-user-check"></i>
-          </span>
-          <span class="icon">
-            <i class="fa-solid fa-clock"></i>
-          </span>
-        </li>
+        <% unless current_user == user %>
+          <li>
+            <%= user.name %>
+            <% if current_user.requested?(user) %>
+              <span class="icon">
+                <i class="fa-solid fa-user-check"></i>
+              </span>
+              <span class="icon">
+                <i class="fa-solid fa-clock"></i>
+              </span>
+            <% else %>
+              <%# Show the correct icon based on friend request status %>
+              <span class="icon">
+                <i class="fa-solid fa-user-plus"></i>
+              </span>
+            <% end %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </div>
