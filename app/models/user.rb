@@ -22,4 +22,9 @@ class User < ApplicationRecord
 
   has_many :friend_requests_as_requester, foreign_key: :requester_id, class_name: :FriendRequest
   has_many :friend_requests_as_receiver, foreign_key: :receiver_id, class_name: :FriendRequest
+
+  def requested?(user)
+    false
+    # !!self.friend_requests_as_requester.find{|request| request.receiver_id == user.id}
+  end
 end
