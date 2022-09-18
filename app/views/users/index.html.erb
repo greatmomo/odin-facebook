@@ -8,19 +8,15 @@
         <% unless current_user == user %>
           <li>
             <%= user.name %>
+            <span class="icon">
             <% if current_user.requestStatus(user) == "pending" %>
-              <span class="icon">
-                <i class="fa-solid fa-clock"></i>
-              </span>
+              <i class="fa-solid fa-clock"></i>
             <% elsif current_user.requestStatus(user) == "accepted" %>
-              <span class="icon">
-                <i class="fa-solid fa-user-check"></i>
-              </span>
+              <i class="fa-solid fa-user-check"></i>
             <% else %>
-              <span class="icon">
-                <i class="fa-solid fa-user-plus"></i>
-              </span>
+              <i class="fa-solid fa-user-plus"></i>
             <% end %>
+            </span>
           </li>
         <% end %>
       <% end %>
