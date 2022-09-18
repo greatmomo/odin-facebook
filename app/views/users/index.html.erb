@@ -7,16 +7,18 @@
       <% @users.each do |user| %>
         <% unless current_user == user %>
           <li>
-            <%= user.name %>
-            <span class="icon">
-            <% if current_user.requestStatus(user) == "pending" %>
-              <i class="fa-solid fa-clock"></i>
-            <% elsif current_user.requestStatus(user) == "accepted" %>
-              <i class="fa-solid fa-user-check"></i>
-            <% else %>
-              <i class="fa-solid fa-user-plus"></i>
-            <% end %>
-            </span>
+            <div class="button is-justify-content-space-around">
+              <div class="span"><%= user.name %></div>
+              <span class="icon">
+              <% if current_user.requestStatus(user) == "pending" %>
+                <i class="fa-solid fa-clock"></i>
+              <% elsif current_user.requestStatus(user) == "accepted" %>
+                <i class="fa-solid fa-user-check"></i>
+              <% else %>
+                <i class="fa-solid fa-user-plus"></i>
+              <% end %>
+              </span>
+            </div>
           </li>
         <% end %>
       <% end %>
