@@ -8,15 +8,15 @@
         <% unless current_user == user %>
           <li>
             <%= user.name %>
-            <% if current_user.requested?(user) %>
-              <span class="icon">
-                <i class="fa-solid fa-user-check"></i>
-              </span>
+            <% if current_user.requestStatus(user) == "pending" %>
               <span class="icon">
                 <i class="fa-solid fa-clock"></i>
               </span>
+            <% elsif current_user.requestStatus(user) == "accepted" %>
+              <span class="icon">
+                <i class="fa-solid fa-user-check"></i>
+              </span>
             <% else %>
-              <%# Show the correct icon based on friend request status %>
               <span class="icon">
                 <i class="fa-solid fa-user-plus"></i>
               </span>

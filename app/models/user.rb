@@ -17,13 +17,16 @@ class User < ApplicationRecord
 
   has_many :posts
 
-  has_many :friend_requests_as_requester, foreign_key: :requester_id, class_name: :FriendRequest
-  has_many :friend_requests_as_receiver, foreign_key: :receiver_id, class_name: :FriendRequest
+  has_many :friend_requests_as_requester, foreign_key: :requester_id, class_name: "FriendRequest"
+  has_many :requested, through: :friend_requests_as_requester
+  has_many :friend_requests_as_receiver, foreign_key: :receiver_id, class_name: "FriendRequest"
+  has_many :received, through: :friend_requests_as_receiver
 
-  # has_many :friend_requests, ->(user) { where("requester_id = ? OR receiver_id = ?", user.id, user.id) }
-  # has_many :friends, through: :friend_requests
-
-  def requested?(user)
-    !!self.friend_requests_as_requester.find{|request| request.receiver_id == user.id}
+  def requestStatus(user)
+    request = self.friend_requests_as_requester.find{|request| request.receiver_id == user.id}
+    if request.nil?
+      return "none"
+    end
+    request.status
   end
 end
