@@ -17,12 +17,14 @@
                 <i class="fa-solid fa-user-check"></i>
               </span>
             <% else %>
-              <div class="button">
-                <span>
-                  <i class="fa-solid fa-user-plus"></i>
-                  Add Friend
-                </span>
-              </div>
+              <%= button_to current_user.friendRequest(user) do %>
+                <div class="button">
+                  <span>
+                    <i class="fa-solid fa-user-plus"></i>
+                    Add Friend
+                  </span>
+                </div>
+              <% end %>
             <% end %>
           </li>
         <% end %>

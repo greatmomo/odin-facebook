@@ -2,15 +2,6 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
-
-  def friendRequest
-    # Grab the target user
-    @receiver = User.all.find(params[:id])
-    # Create a friend request with that user and current user id
-    FriendRequest.create(requester_id: current_user.id, receiver_id: @receiver.id, status: "pending")
-    # Redirect back to friend requests list
-    redirect_to users_path
-  end
   
   # this logic seems to be javascript, needs to be modified to work with rails
 

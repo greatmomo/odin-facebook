@@ -29,4 +29,27 @@ class User < ApplicationRecord
     end
     request.status
   end
+
+  def friendRequest(receiver)
+    # Grab the target user
+    # receiver = User.all.find(|receiver| receiver.id == user.id)
+    # Create a friend request with that user and current user id
+    FriendRequest.create(requester_id: current_user.id, receiver_id: receiver.id, status: "pending")
+    # Redirect back to friend requests list
+    # redirect_to users_path
+  end
 end
+
+# add a controller action to your corresponding controller like,
+
+# def ban_user
+#  @user = User.find(params[:id])
+#  @user.deactivated("true")
+# end
+# add this action to your routes.rb
+
+# get 'controller/ban_user'
+# now you can add the link to your views
+
+# <%= link_to 'Ban User', controller_user_ban_path(:id => @user.id), class:"button is-danger", remote: true %>
+# this will call the function without loading the page.
