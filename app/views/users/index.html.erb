@@ -17,7 +17,7 @@
                 <i class="fa-solid fa-user-check"></i>
               </span>
             <% else %>
-              <%= button_to current_user.friendRequest(user) do %>
+              <%= button_to current_user.friendRequest(current_user, user) do %>
                 <div class="button">
                   <span>
                     <i class="fa-solid fa-user-plus"></i>

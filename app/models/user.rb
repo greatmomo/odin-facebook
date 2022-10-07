@@ -30,13 +30,9 @@ class User < ApplicationRecord
     request.status
   end
 
-  def friendRequest(receiver)
-    # Grab the target user
-    # receiver = User.all.find(|receiver| receiver.id == user.id)
-    # Create a friend request with that user and current user id
-    FriendRequest.create(requester_id: current_user.id, receiver_id: receiver.id, status: "pending")
-    # Redirect back to friend requests list
-    # redirect_to users_path
+  def friendRequest(requester, receiver)
+    FriendRequest.create(requester_id: requester.id, receiver_id: receiver.id, status: "pending")
+    redirect_to users_path
   end
 end
 
