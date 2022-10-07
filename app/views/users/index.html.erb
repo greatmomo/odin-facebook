@@ -1,34 +1,40 @@
 <%# loop across all users and show them with variable friend request buttons %>
 
+
 <div class="column is-2 is-offset-5">
-  <h2 class="title is-3">Friends</h2>
   <div class="box">
-    <ul>
+    <table class="table">
+      <thead>Friends</thead>
       <% @users.each do |user| %>
         <% unless current_user == user %>
-          <li>
-            <div class="span"><%= user.name %></div>
-            <% if current_user.requestStatus(user) == "pending" %>
-              <span class="icon">
-                <i class="fa-solid fa-clock"></i>
-              </span>
-            <% elsif current_user.requestStatus(user) == "accepted" %>
-              <span class="icon">
-                <i class="fa-solid fa-user-check"></i>
-              </span>
-            <% else %>
-              <%= button_to current_user.friendRequest(current_user, user) do %>
-                <div class="button">
-                  <span>
-                    <i class="fa-solid fa-user-plus"></i>
-                    Add Friend
-                  </span>
-                </div>
+          <tr>
+            <td>
+              <div class="span"><%= user.name %></div>
+            </td>
+    
+            <td>
+              <% if current_user.requestStatus(user) == "pending" %>
+                <span class="icon">
+                  <i class="fa-solid fa-clock"></i>
+                </span>
+              <% elsif current_user.requestStatus(user) == "accepted" %>
+                <span class="icon">
+                  <i class="fa-solid fa-user-check"></i>
+                </span>
+              <% else %>
+                <%= button_to current_user.friendRequest(current_user, user) do %>
+                  <div class="button">
+                    <span>
+                      <i class="fa-solid fa-user-plus"></i>
+                      Add Friend
+                    </span>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
-          </li>
+            </td>
+          </tr>
         <% end %>
       <% end %>
-    </ul>
+    </table>
   </div>
 </div>
