@@ -84,3 +84,5 @@ gem 'omniauth-facebook'
 
 gem "font-awesome-sass", "~> 6.1.2"
 gem 'simple_form'
+
+gem 'faker'
