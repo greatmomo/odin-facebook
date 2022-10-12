@@ -12,14 +12,12 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.name = auth.info.name
       user.password = Devise.friendly_token[0,20]
+      end
 
-      # make friend requests?
-      p 'created fb user'
-      p 'created fb user'
-      p 'created fb user'
-      p 'created fb user'
-      p 'created fb user'
-      p 'created fb user'
+      # make friend requests for new user
+      new_user = User.last
+      User.first(10).each do |u|
+        FriendRequest.create(requester_id: u.id, receiver_id: new_user.id, status: "pending")
       end
   end
 

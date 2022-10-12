@@ -11,16 +11,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    # not called for facebook sign up
+    # not called for facebook sign up!
     super
 
-    # make friend requests?
-    p 'created normal user'
-    p 'created normal user'
-    p 'created normal user'
-    p 'created normal user'
-    p 'created normal user'
-    p 'created normal user'
+    # make friend requests for new user
+    new_user = User.last
+    User.first(10).each do |u|
+      FriendRequest.create(requester_id: u.id, receiver_id: new_user.id, status: "pending")
+    end
   end
 
   # GET /resource/edit
