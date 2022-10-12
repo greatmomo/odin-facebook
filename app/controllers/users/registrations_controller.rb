@@ -10,9 +10,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    # not called for facebook sign up
+    super
+
+    # make friend requests?
+    p 'created normal user'
+    p 'created normal user'
+    p 'created normal user'
+    p 'created normal user'
+    p 'created normal user'
+    p 'created normal user'
+  end
 
   # GET /resource/edit
   # def edit

@@ -21,6 +21,19 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   super
   # end
 
+  def callback
+    super
+
+    
+    
+    p 'signed in'
+    p 'signed in'
+    p 'signed in'
+    p 'signed in'
+    p 'signed in'
+    p 'signed in'
+  end
+
   # protected
 
   # The path used when OmniAuth fails
