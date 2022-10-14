@@ -32,6 +32,24 @@
         <%# Make this whole thing only available if logged in! %>
           <div class="navbar-item">
             <div class="buttons">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                    <span>Notifications</span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                  <div class="dropdown-content">
+                    <a href="" class="dropdown-item">
+                      <strong>Friend Request</strong>
+                    </a>
+                    <a href="" class="dropdown-item">
+                      New Post!
+                    </a>
+                  </div>
+                </div>
+              </div>
+
               <%= link_to "find friends", users_path, class:"button is-primary" %>
               <%= button_to "logout", destroy_user_session_path, method: :delete, class:"button is-light" %>
             </div>
