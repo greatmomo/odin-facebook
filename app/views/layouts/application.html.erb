@@ -31,27 +31,7 @@
           <% if user_signed_in? %>
         <%# Make this whole thing only available if logged in! %>
           <div class="navbar-item">
-            <div class="dropdown is-hoverable">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                  <span>Notifications</span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                <div class="dropdown-content">
-                  <a href="" class="dropdown-item">
-                    <strong>Friend Request</strong>
-                  </a>
-                  <a href="" class="dropdown-item">
-                    New Post!
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="navbar-item">
-              <%= link_to "find friends", users_path, class:"button is-primary navbar-item" %>
-            </div>
-            <%= button_to "logout", destroy_user_session_path, method: :delete, class:"button is-light navbar-item" %>
+            <%= button_to "logout", destroy_user_session_path, method: :delete, class:"button is-warning navbar-item" %>
           </div>
           <% end %>
         </div>
@@ -59,7 +39,8 @@
     </nav>
 
     <div class="columns">
-      <div class="column is-3 has-background-info-light">
+      <% if user_signed_in? %>
+      <div class="column is-2 has-background-info-light">
         <section class="hero is-fullheight">
           <div class="hero-body has-text-centered">
             <div class="box">
@@ -93,7 +74,7 @@
                     </tr>
                     <tr>
                       <td>
-                        Find Friends
+                        <%= link_to "Find Friends", users_path%>
                       </td>
                     </tr>
                     <tr>
@@ -118,12 +99,14 @@
           </div>
         </section>
       </div>
+      <% end %>
 
       <div class="column">
         <%= yield %>
       </div>
 
-      <div class="column is-3 has-background-info-light">
+      <% if user_signed_in? %>
+      <div class="column is-2 has-background-info-light">
         <section class="hero is-fullheight">
           <div class="hero-body has-text-centered">
             <div class="box">
@@ -148,6 +131,7 @@
           </div>
         </section>
       </div>
+      <% end %>
     </div>
   </body>
 </html>
