@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook github]
   
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid, name: auth.info.name).first_or_create do |user|
+    new_user = where(provider: auth.provider, uid: auth.uid, name: auth.info.name).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
@@ -14,11 +14,15 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end
 
-      # # make friend requests for new user
-      # new_user = User.last
-      # User.first(10).each do |u|
-      #   FriendRequest.create(requester_id: u.id, receiver_id: new_user.id, status: "pending")
-      # end
+    User.first(10).each do |u|
+      FriendRequest.where(requester_id: u.id, receiver_id: new_user.id).first_or_create do |request|
+        request.requester_id = u.id
+        request.receiver_id = new_user.id
+        request.status = "pending"
+      end
+    end
+
+    new_user
   end
 
   has_many :posts

@@ -9,6 +9,8 @@
 User.destroy_all
 FriendRequest.destroy_all
 
+p "Deleted all users and friend requests"
+
 (10).times do User.create!([{
   email: Faker::Internet.email,
   name: Faker::Name.name,
