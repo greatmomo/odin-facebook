@@ -69,12 +69,12 @@
                     </tr>
                     <tr>
                       <td>
-                        Friends
+                        <%= link_to "Friends", users_path(:mode => "accepted") %>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <%= link_to "Find Friends", users_path %>
+                        <%= link_to "Find Friends", users_path(:mode => "other") %>
                       </td>
                     </tr>
                     <tr>
