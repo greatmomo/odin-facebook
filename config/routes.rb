@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "posts#index"
 
-  patch '/user/:id/friendRequest', to: 'users#index'
+  # patch '/user/:id/friendRequest', to: 'users#index', as: 'users'
 
 
 end
