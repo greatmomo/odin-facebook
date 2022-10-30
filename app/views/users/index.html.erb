@@ -4,31 +4,64 @@
 <div class="column is-2 is-offset-5">
   <div class="box">
     <table class="table">
-      <thead>Friends</thead>
+      <% if params[:mode] == "accepted" %>
+        <thead>Friends</thead>
+      <% else %>
+        <thead>Request a friend</thead>
+      <% end %>
+      
       <% @users.each do |user| %>
         <% unless current_user == user %>
-          <tr>
-            <td>
-              <div class="span"><%= user.name %></div>
-            </td>
-    
-            <td>
-              <% if current_user.requestStatus(user) == "pending" %>
-                <span class="icon">
-                  <i class="fa-solid fa-clock"></i>
-                </span>
-              <% elsif current_user.requestStatus(user) == "accepted" %>
-                <span class="icon">
-                  <i class="fa-solid fa-user-check"></i>
-                </span>
-              <% else %>
-                <%= button_to current_user.friendRequest(current_user, user) do %>
-                  <div class="button">
-                    <span>
-                      <i class="fa-solid fa-user-plus"></i>
-                      Add Friend
+          
+              <% if params[:mode] == "accepted" %>
+                <% if current_user.requestStatus(user) == "accepted" %>
+                <tr>
+                  <td>
+                    <div class="span"><%= user.name %></div>
+                  </td>
+          
+                  <td>
+                    <span class="icon">
+                      <i class="fa-solid fa-user-check"></i>
                     </span>
-                  </div>
+                  </td>
+                </tr>
+                <% end %>
+
+              <% else %>
+                <% if current_user.requestStatus(user) == "pending" %>
+                  <tr>
+                    <td>
+                      <div class="span"><%= user.name %></div>
+                    </td>
+          
+                    <td>
+                      <span class="icon">
+                        <i class="fa-solid fa-clock"></i>
+                      </span>
+                    </td>
+                  </tr>
+
+                <% elsif current_user.requestStatus(user) == "accepted" %>
+                  <%= p "this is not a thing" %>
+
+                <% else %>
+                  <%= button_to current_user.friendRequest(current_user, user) do %>
+                    <tr>
+                      <td>
+                        <div class="span"><%= user.name %></div>
+                      </td>
+            
+                      <td>
+                        <div class="button">
+                          <span>
+                            <i class="fa-solid fa-user-plus"></i>
+                            Add Friend
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
                 <% end %>
               <% end %>
             </td>
