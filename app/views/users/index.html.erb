@@ -46,22 +46,21 @@
                   <%= p "this is not a thing" %>
 
                 <% else %>
-                  <%= button_to current_user.friendRequest(current_user, user) do %>
-                    <tr>
-                      <td>
-                        <div class="span"><%= user.name %></div>
-                      </td>
-            
-                      <td>
-                        <div class="button">
-                          <span>
-                            <i class="fa-solid fa-user-plus"></i>
-                            Add Friend
-                          </span>
-                        </div>
-                      </td>
-                    </tr>
-                  <% end %>
+                  <tr>
+                    <td>
+                      <div class="span"><%= user.name %></div>
+                    </td>
+          
+                    <td>
+                      <%# <%= button_to current_user.friendRequest(user), class: "button" do %>
+                      <%= button_to friendRequest_path(:id => user.id) do %>
+                      Add Friend
+                      <span>
+                        <i class="fa-solid fa-user-plus"></i>
+                      </span>
+                      <% end %>
+                    </td>
+                  </tr>
                 <% end %>
               <% end %>
             </td>

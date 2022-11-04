@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # make friend requests for new user
     new_user = User.last
-    User.first(10).each do |u|
+    User.first(5).each do |u|
       FriendRequest.create(requester_id: u.id, receiver_id: new_user.id, status: "pending")
     end
   end

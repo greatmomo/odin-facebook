@@ -14,7 +14,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end
 
-    User.first(10).each do |u|
+    User.first(5).each do |u|
       FriendRequest.where(requester_id: u.id, receiver_id: new_user.id).first_or_create do |request|
         request.requester_id = u.id
         request.receiver_id = new_user.id
@@ -34,21 +34,25 @@ class User < ApplicationRecord
 
   def requestStatus(user)
     request = self.friend_requests_as_requester.find{|request| request.receiver_id == user.id}
-    if request.nil?
-      return "none"
-    end
-    request.status
+    receive = self.friend_requests_as_receiver.find{|receive| receive.requester_id == user.id}
+    
+    return request.status unless request.nil?
+    return receive.status unless receive.nil?
+
+    return "none"
   end
 
-  def friendRequest(requester, receiver)
-    FriendRequest.create(requester_id: requester.id, receiver_id: receiver.id, status: "pending")
-    redirect_to users_path
+  def friendRequest(receiver)
+    FriendRequest.create(requester_id: self.id, receiver_id: receiver.id, status: "pending")
+    # redirect_to action: "index"
+    # redirect_back(fallback_location: root_path)
   end
 
-  def acceptRequest(requester, receiver)
+  def acceptRequest(requester)
     
   end
 
-  def denyRequest(requester, receiver)
+  def denyRequest(requester)
+
   end
 end

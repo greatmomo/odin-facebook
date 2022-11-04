@@ -13,7 +13,7 @@
             </td>
     
             <td>
-              <%= button_to current_user.acceptRequest(current_user, fr) do %>
+              <%= button_to current_user.acceptRequest(fr) do %>
                 <div class="button">
                   <span>
                     Accept
@@ -23,7 +23,7 @@
             </td>
 
             <td>
-              <%= button_to current_user.denyRequest(current_user, fr) do %>
+              <%= button_to current_user.denyRequest(fr) do %>
                 <div class="button">
                   <span>
                     Deny
