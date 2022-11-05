@@ -52,12 +52,27 @@
                     </td>
           
                     <td>
-                      <%# <%= button_to current_user.friendRequest(user), class: "button" do %>
-                      <%= button_to friendRequest_path(:id => user.id) do %>
-                      Add Friend
-                      <span>
-                        <i class="fa-solid fa-user-plus"></i>
-                      </span>
+                      <%= simple_form_for :friendRequest do |f| %>
+                        <%= f.error_notification %>
+
+                        <%= f.input :requester_id, :input_html => { :value => current_user.id }, wrapper_html: { class: 'is-hidden' } %>
+
+                        <div class="field">
+                          <div class="control">
+                            <%= f.input :receiver_id,
+                                        required: true,
+                                        input_html: { :value => user.id },
+                                        wrapper: false,
+                                        label_html: { class: "label" } %>
+                          </div>
+                        </div>
+
+                        <div class="field">
+                          <div class="control">
+                            <%= f.button :submit, "Add Friend", class: "button is-info is-medium" %>
+                          </div>
+                        </div>
+
                       <% end %>
                     </td>
                   </tr>
