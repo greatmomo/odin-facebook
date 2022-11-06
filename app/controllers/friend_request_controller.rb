@@ -3,6 +3,10 @@ class FriendRequestController < ApplicationController
     @friendRequests = FriendRequest.all
   end
 
+  def new
+    @friendRequest = FriendRequest.new
+  end
+
   def create
     @friendRequest = FriendRequest.new(friend_request_params)
 

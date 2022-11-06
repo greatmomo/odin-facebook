@@ -52,27 +52,21 @@
                     </td>
           
                     <td>
-                      <%= simple_form_for :friendRequest do |f| %>
-                        <%= f.error_notification %>
-
-                        <%= f.input :requester_id, :input_html => { :value => current_user.id }, wrapper_html: { class: 'is-hidden' } %>
-
-                        <div class="field">
-                          <div class="control">
-                            <%= f.input :receiver_id,
-                                        required: true,
-                                        input_html: { :value => user.id },
-                                        wrapper: false,
-                                        label_html: { class: "label" } %>
-                          </div>
+                      <%= form_with model: @friend_request do |f| %>
+                        <div class="field is-hidden">
+                          <%= f.text_field :requester_id, value: current_user.id %>
+                        </div>
+                        <div class="field is-hidden">
+                          <%= f.text_field :receiver_id, value: user.id %>
                         </div>
 
                         <div class="field">
-                          <div class="control">
-                            <%= f.button :submit, "Add Friend", class: "button is-info is-medium" %>
-                          </div>
+                          <%= button_tag(type: 'submit', class: 'button is-ghost') do %>
+                            <span class="icon">
+                              <i class="fa-solid fa-user-plus"></i>
+                            </span>
+                          <% end %>
                         </div>
-
                       <% end %>
                     </td>
                   </tr>
