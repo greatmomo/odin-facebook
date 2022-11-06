@@ -59,6 +59,9 @@
                         <div class="field is-hidden">
                           <%= f.text_field :receiver_id, value: user.id %>
                         </div>
+                        <div class="field is-hidden">
+                          <%= f.text_field :status, value: 'pending' %>
+                        </div>
 
                         <div class="field">
                           <%= button_tag(type: 'submit', class: 'button is-ghost') do %>
