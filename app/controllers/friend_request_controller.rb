@@ -3,8 +3,13 @@ class FriendRequestController < ApplicationController
     @friendRequests = FriendRequest.all
   end
 
+  def new
+    @friendRequest = FriendRequest.new
+  end
+
   def create
     @friendRequest = FriendRequest.new(friend_request_params)
+    p "Friend request create has been called!"
 
     respond_to do |format|
       if @friendRequest.save
@@ -20,6 +25,6 @@ class FriendRequestController < ApplicationController
   private
     # Only allow a list of trusted parameters through.
     def friend_request_params
-      params.require(:friendRequest).permit(:requester_id, :receiver_id)
+      params.require(:friendRequest).permit(:requester_id, :receiver_id, :status)
     end
 end
