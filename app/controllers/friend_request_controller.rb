@@ -1,30 +1,43 @@
 class FriendRequestController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_friend_request, except: [:create, :index]
+
   def index
     @friendRequests = FriendRequest.all
   end
 
-  def new
-    @friendRequest = FriendRequest.new
+  def create
+    friend_request = FriendRequest.create(requester_id: current_user.id, receiver_id: params[:receiver_id])
+    if friend_request.save
+      redirect_back fallback_location: user_url(current_user), notice: 'Friend Request sent!'
+    else
+      redirect_back fallback_location: user_url(current_user), alert: "Sorry, your request could not be completed. (#{friend_request.errors.full_messages.join(', ')}.)"
+    end
   end
 
-  def create
-    @friendRequest = FriendRequest.new(friend_request_params)
-    p "Friend request create has been called!"
+  def confirm
+    if @friend_request.receiver == current_user
+      @friend_request.status = "accepted"
+      redirect_back fallback_location: user_url(current_user), notice: 'Friend Request accepted!'
+    else
+      flash[:alert] = 'You are not authorized to accept this friend request.'
+      redirect_to root_url
+    end
+  end
 
-    respond_to do |format|
-      if @friendRequest.save
-        format.html { redirect_to post_url(@friendRequest), notice: "Friend Request was successfully created." }
-        format.json { render :show, status: :created, location: @friendRequest }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @friendRequest.errors, status: :unprocessable_entity }
-      end
+  def delete
+    if @friend_request.receiver == current_user
+      @friend_request.destroy
+      redirect_back fallback_location: user_url(current_user), notice: 'Friend Request was successfully deleted.'
+    else
+      flash[:alert] = 'You are not authorized to delete this friend request.'
+      redirect_to root_url
     end
   end
 
   private
-    # Only allow a list of trusted parameters through.
-    def friend_request_params
-      params.require(:friendRequest).permit(:requester_id, :receiver_id, :status)
-    end
+
+  def set_friend_request
+    @friend_request = FriendRequest.find(params[:id])
+  end
 end
