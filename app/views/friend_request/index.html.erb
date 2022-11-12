@@ -13,7 +13,7 @@
             </td>
     
             <td>
-              <%= link_to delete_friend_request_path(fr),
+              <%= button_to delete_friend_request_path(fr),
                           method: :delete,
                           class: 'delete-request',
                           data: { confirm: "Delete #{fr.requester.name}'s friend request?" } do %>
@@ -22,7 +22,7 @@
             </td>
 
             <td>
-              <%= link_to confirm_friend_request_path(fr),
+              <%= button_to confirm_friend_request_path(fr),
                           method: :post,
                           class: 'confirm-request' do %>
                 <i class="fas fa-user-check"></i>
