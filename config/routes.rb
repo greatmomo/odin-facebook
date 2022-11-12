@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", registrations: 'users/registrations' }
 
   resources :users, only: [:index]
-
-  
   
   resources :friend_request, only: [:create, :index] do
     member do
