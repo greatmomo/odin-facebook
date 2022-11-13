@@ -17,7 +17,10 @@ class FriendRequestController < ApplicationController
 
   def confirm
     if @friend_request.receiver == current_user
-      @friend_request.status = "accepted"
+      FriendRequest.create(receiver_id: @friend_request.receiver.id, requester_id: @friend_request.requester.id,
+      status: "accepted")
+      # FriendRequest.create(requester_id: u.id, receiver_id: new_user.id, status: "pending")
+      @friend_request.destroy
       redirect_back fallback_location: friend_request_index_path, notice: 'Friend Request accepted!'
     else
       flash[:alert] = 'You are not authorized to accept this friend request.'

@@ -1,12 +1,12 @@
 <%# loop across all friend requests and show them with variable friend request buttons %>
 
 
-<div class="column is-2 is-offset-5">
+<div class="column is-3 is-offset-4">
   <div class="box">
     <table class="table">
       <thead>Friend Requests</thead>
       <% @friendRequests.each do |fr| %>
-        <% if current_user == fr.receiver %>
+        <% if current_user == fr.receiver && fr.status != "accepted" %>
           <tr>
             <td>
               <div class="span"><%= fr.requester.name %></div>
