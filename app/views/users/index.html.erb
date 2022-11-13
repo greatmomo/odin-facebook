@@ -43,8 +43,7 @@
                   </tr>
 
                 <% elsif current_user.requestStatus(user) == "accepted" %>
-                  <%= p "this is not a thing" %>
-
+                  <%# blank to deal with accepted requests %>
                 <% else %>
                   <tr>
                     <td>
@@ -52,24 +51,8 @@
                     </td>
           
                     <td>
-                      <%= form_with model: @friend_request do |f| %>
-                        <div class="field is-hidden">
-                          <%= f.text_field :requester_id, value: current_user.id %>
-                        </div>
-                        <div class="field is-hidden">
-                          <%= f.text_field :receiver_id, value: user.id %>
-                        </div>
-                        <div class="field is-hidden">
-                          <%= f.text_field :status, value: 'pending' %>
-                        </div>
-
-                        <div class="field">
-                          <%= button_tag(type: 'submit', class: 'button is-ghost') do %>
-                            <span class="icon">
-                              <i class="fa-solid fa-user-plus"></i>
-                            </span>
-                          <% end %>
-                        </div>
+                      <%= button_to @friend_request, method: :post, class: 'button is-ghost', params: { recipient_id: user.id } do %>
+                        <i class="fas fa-user-plus"></i>
                       <% end %>
                     </td>
                   </tr>
