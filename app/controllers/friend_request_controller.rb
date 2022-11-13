@@ -7,7 +7,7 @@ class FriendRequestController < ApplicationController
   end
 
   def create
-    friend_request = FriendRequest.create(requester_id: current_user.id, receiver_id: params[:receiver_id])
+    friend_request = FriendRequest.create(requester_id: current_user.id, receiver_id: params[:receiver_id], status: "pending")
     if friend_request.save
       redirect_back fallback_location: friend_request_index_path, notice: 'Friend Request sent!'
     else

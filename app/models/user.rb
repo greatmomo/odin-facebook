@@ -41,18 +41,4 @@ class User < ApplicationRecord
 
     return "none"
   end
-
-  def friendRequest(receiver)
-    FriendRequest.create(requester_id: self.id, receiver_id: receiver.id, status: "pending")
-    # redirect_to action: "index"
-    # redirect_back(fallback_location: root_path)
-  end
-
-  def acceptRequest(requester)
-    
-  end
-
-  def denyRequest(requester)
-
-  end
 end

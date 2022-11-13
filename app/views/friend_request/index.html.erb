@@ -7,29 +7,20 @@
       <thead>Friend Requests</thead>
       <% @friendRequests.each do |fr| %>
         <% if current_user == fr.receiver && fr.status != "accepted" %>
-          <tr>
-            <td>
-              <div class="span"><%= fr.requester.name %></div>
-            </td>
-    
-            <td>
-              <%= button_to delete_friend_request_path(fr),
-                          method: :delete,
-                          class: 'delete-request',
-                          data: { confirm: "Delete #{fr.requester.name}'s friend request?" } do %>
-                <i class="fas fa-user-times"></i>
-              <% end %>
-            </td>
-
-            <td>
-              <%= button_to confirm_friend_request_path(fr),
-                          method: :post,
-                          class: 'confirm-request' do %>
-                <i class="fas fa-user-check"></i>
-              <% end %>
-            </td>
-
-          </tr>
+          <div class="is-flex is-justify-content-space-between is-align-content-center">
+            <div class="container"><%= fr.requester.name %></div>
+            <%= button_to delete_friend_request_path(fr),
+                        method: :delete,
+                        class: 'button is-ghost',
+                        data: { confirm: "Delete #{fr.requester.name}'s friend request?" } do %>
+              <i class="fas fa-user-times"></i>
+            <% end %>
+            <%= button_to confirm_friend_request_path(fr),
+                        method: :post,
+                        class: 'button is-ghost' do %>
+              <i class="fas fa-user-check"></i>
+            <% end %>
+          </div>
         <% end %>
       <% end %>
     </table>
