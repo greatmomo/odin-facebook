@@ -51,7 +51,7 @@
                     </td>
           
                     <td>
-                      <%= button_to @friend_request, method: :post, class: 'button is-ghost', params: { recipient_id: user.id } do %>
+                      <%= button_to friend_request_index_path, method: :post, class: 'button is-ghost', params: { receiver_id: user.id } do %>
                         <i class="fas fa-user-plus"></i>
                       <% end %>
                     </td>
