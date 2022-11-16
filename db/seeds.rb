@@ -25,11 +25,11 @@ p "Created #{User.count} users"
 ids = User.all.map{ |u| u.id }
 ids.each do |id|
 Post.create!([{
-  body: Faker::Lorem.words(number: rand(2..10)).join(' '),
+  body: Faker::Lorem.words(number: rand(10..20)).join(' '),
   user_id: id
 }])
 Post.create!([{
-  body: Faker::Lorem.words(number: rand(2..10)).join(' '),
+  body: Faker::Lorem.words(number: rand(10..20)).join(' '),
   user_id: id
 }])
 end
