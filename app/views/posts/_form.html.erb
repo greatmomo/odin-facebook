@@ -1,19 +1,21 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
+<%= form_with model: @post do |form| %>
+  <% if @post.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-        <% post.errors.each do |error| %>
+        <% @post.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
   <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_field :body %>
+    <%= form.label :body, class: "label", value: "Make a new post:" %>
+    <%= form.text_area :body, class: "textarea" %>
   </div>
 
   <div>
