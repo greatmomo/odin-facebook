@@ -8,6 +8,7 @@
 
 User.destroy_all
 FriendRequest.destroy_all
+Post.destroy_all
 
 p "Deleted all users and friend requests"
 

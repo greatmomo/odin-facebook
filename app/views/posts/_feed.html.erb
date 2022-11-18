@@ -2,8 +2,16 @@
   <div class="hero-body has-text-centered">
     <div class="container is-max-desktop">
       <div class="box">
-        <h1 class="title">This is the post feed!</h1>
-        <div class="content">The time is now: <%= Time.now %></div>
+        <%= render 'form' %>
+      </div>
+      <div class="box">
+        <% @posts.each do |post| %>
+          <div class="box">
+            <% user = User.find(post.user_id) %>
+            <%= user.name %>:
+            <%= post.body %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
