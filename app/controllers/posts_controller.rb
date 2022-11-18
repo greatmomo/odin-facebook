@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc).all
     @post = Post.new
     # Add some stuff here to select only posts of friends or something
   end
