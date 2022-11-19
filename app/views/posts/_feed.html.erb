@@ -6,10 +6,25 @@
       </div>
       <div class="box">
         <% @posts.each do |post| %>
-          <div class="box">
-            <% user = User.find(post.user_id) %>
-            <%= user.name %>:
-            <%= post.body %>
+          <% user = User.find(post.user_id) %>
+          <% time_diff = Time.now - post.created_at %>
+          <div class="box is-flex is-flex-direction-column">
+            <div class="is-flex is-justify-content-space-between">
+              <div class="label">
+                <%= user.name %>:
+              </div>
+              <div class="label">
+                <% if time_diff < 3600 %> 
+                  <%= "#{time_diff / 60}".scan(/^(\d*)\.?\d*$/)[0][0] + "m" %>
+                <% elsif time_diff < 86400 %>
+                  <%= "#{time_diff / 3600}".scan(/^(\d*)\.?\d*$/)[0][0] + "h" %>
+                <% else %>
+                  <%= "#{time_diff / 86400}".scan(/^(\d*)\.?\d*$/)[0][0] + "d" %>
+                <% end %>
+              </div>
+            </div>
+            
+            <div class="box has-text-left"><%= post.body %></div>
           </div>
         <% end %>
       </div>
