@@ -5,7 +5,6 @@
         <%= render 'form' %>
       </div>
       <div class="box">
-        <%= @ids %>
         <% @posts.each do |post| %>
           <div class="box">
             <% user = User.find(post.user_id) %>

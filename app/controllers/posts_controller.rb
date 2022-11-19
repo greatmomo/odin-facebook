@@ -3,7 +3,6 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.order(created_at: :desc).all
     @post = Post.new
     # Add some stuff here to select only posts of friends or something
     if current_user
@@ -11,6 +10,8 @@ class PostsController < ApplicationController
                     current_user.friend_requests_as_requester.where(status: "accepted").map{ |request| request.receiver_id }
     end
     @ids = @friend_ids.push(current_user.id)
+
+    @posts = Post.where(user_id: @ids).order(created_at: :desc).all
   end
 
   # GET /posts/1 or /posts/1.json
