@@ -25,6 +25,13 @@
             </div>
             
             <div class="box has-text-left"><%= post.body %></div>
+
+            <div class="has-text-right">
+              <%= button_to likes_path, method: :post, class: 'button is-ghost', params: { post_id: post.id } do %>
+                <i class="fa-regular fa-thumbs-up"></i>
+                <%# <i class="fa-solid fa-thumbs-up"></i> %>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>

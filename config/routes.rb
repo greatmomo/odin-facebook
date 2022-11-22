@@ -15,5 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
-  # patch '/user/:id/friendRequest', to: 'users#index', as: 'friendRequest'
+  resources :likes, only: [:create] do
+    member do
+      delete 'delete'
+    end
+  end
 end
