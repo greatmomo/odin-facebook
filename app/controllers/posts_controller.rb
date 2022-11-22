@@ -8,10 +8,11 @@ class PostsController < ApplicationController
     if current_user
       @friend_ids = current_user.friend_requests_as_receiver.where(status: "accepted").map{ |request| request.requester_id } +
                     current_user.friend_requests_as_requester.where(status: "accepted").map{ |request| request.receiver_id }
-    end
-    @ids = @friend_ids.push(current_user.id)
+      @ids = @friend_ids.push(current_user.id)
 
-    @posts = Post.where(user_id: @ids).order(created_at: :desc).all
+      @posts = Post.where(user_id: @ids).order(created_at: :desc).all
+    end
+    
   end
 
   # GET /posts/1 or /posts/1.json
