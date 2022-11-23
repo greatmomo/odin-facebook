@@ -27,10 +27,22 @@
             <div class="box has-text-left"><%= post.body %></div>
 
             <div class="has-text-right">
-              <%= button_to likes_path, method: :post, class: 'button is-ghost', params: { post_id: post.id } do %>
-                <i class="fa-regular fa-thumbs-up"></i>
-                <%# <i class="fa-solid fa-thumbs-up"></i> %>
+              <% like_user_ids = post.likes.map{|l| l[:user_id]} %>
+              <% if like_user_ids.include?(current_user.id) %>
+                <% like = Like.where(post_id: post.id, user_id: current_user.id).first %>
+                <%= button_to delete_like_path(like.id),
+                          method: :delete,
+                          class: 'button is-ghost' do %>
+                  <i class="fa-solid fa-thumbs-up"></i>
+                  <%= like_user_ids.size %>
+                <% end %>
+              <% else %>
+                <%= button_to likes_path, method: :post, class: 'button is-ghost', params: { post_id: post.id } do %>
+                  <i class="fa-regular fa-thumbs-up"></i>
+                  <%= like_user_ids.size %>
+                <% end %>
               <% end %>
+              
             </div>
           </div>
         <% end %>
