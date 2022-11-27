@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
       @posts = Post.where(user_id: @ids).order(created_at: :desc).all
     end
-    
+    @comment = Comment.new
   end
 
   # GET /posts/1 or /posts/1.json
