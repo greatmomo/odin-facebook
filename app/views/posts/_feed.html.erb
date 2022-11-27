@@ -44,10 +44,30 @@
               <% end %>
               
             </div>
-          </div>
 
-          <div class="box">
-            <%= render 'comments/form', :locals => {:post => post} %>
+             <% post.comments.each do |comment| %>
+               <% comment_user = User.find(comment.user_id) %>
+               <% comment_time_diff = Time.now - comment.created_at %>
+               <div class="box is-flex is-flex-direction-column">
+                 <div class="is-flex is-justify-content-space-between">
+                   <div class="label">
+                     <%= comment_user.name %>:
+                   </div>
+                   <div class="label">
+                     <% if comment_time_diff < 3600 %> 
+                       <%= "#{comment_time_diff / 60}".scan(/^(\d*)\.?\d*$/)[0][0] + "m" %>
+                     <% elsif comment_time_diff < 86400 %>
+                       <%= "#{comment_time_diff / 3600}".scan(/^(\d*)\.?\d*$/)[0][0] + "h" %>
+                     <% else %>
+                       <%= "#{comment_time_diff / 86400}".scan(/^(\d*)\.?\d*$/)[0][0] + "d" %>
+                     <% end %>
+                   </div>
+                 </div>
+                  
+                 <div class="box has-text-left"><%= comment.body %></div>
+               </div>
+             <% end %>
+             <%= render 'comments/form', :locals => {:post => post} %>
           </div>
         <% end %>
       </div>
