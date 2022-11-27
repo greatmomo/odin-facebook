@@ -3,7 +3,6 @@
 This is a facebook clone based on - https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project
 
 TODO:
-- Add Comments to Posts
 - Profile w/ photo
 - User Show Page
 - mailer for welcome email
