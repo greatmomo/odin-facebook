@@ -26,6 +26,7 @@ class User < ApplicationRecord
   end
 
   has_many :posts
+  has_one :profile
 
   has_many :friend_requests_as_requester, foreign_key: :requester_id, class_name: "FriendRequest"
   has_many :requested, through: :friend_requests_as_requester
