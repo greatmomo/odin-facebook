@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_profile, only: %i[ show edit update destroy ]
 
   # GET /profile/1 or /profile/1.json
   def show
@@ -12,6 +12,7 @@ class ProfileController < ApplicationController
 
   # GET /profile/1/edit
   def edit
+    @profile = current_user.profile
   end
 
   # POST /profile or /profile.json
@@ -33,7 +34,7 @@ class ProfileController < ApplicationController
   def update
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to post_url(@profile), notice: "Profile was successfully updated." }
+        format.html { redirect_to user_profile_path(user_id: current_user, id: current_user.profile.id), notice: "Profile was successfully updated." }
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit, status: :unprocessable_entity }
