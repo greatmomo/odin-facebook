@@ -6,11 +6,14 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.destroy_all
+Like.destroy_all
+Comment.destroy_all
 FriendRequest.destroy_all
 Post.destroy_all
+Profile.destroy_all
+User.destroy_all
 
-p "Deleted all users and friend requests"
+p "Deleted all users/friend requests/posts/comments/likes/profiles"
 
 (10).times do User.create!([{
   email: Faker::Internet.email,
@@ -36,3 +39,13 @@ Post.create!([{
 end
 
 p "Created #{Post.count} posts"
+
+users = User.all
+users.each do |user|
+  user.profile = Profile.create!([{
+  bio: Faker::Lorem.words(number: rand(10..20)).join(' '),
+  user_id: user.id
+}]).first
+end
+
+p "Created #{Profile.count} profiles"

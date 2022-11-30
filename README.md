@@ -4,6 +4,10 @@ This is a facebook clone based on - https://www.theodinproject.com/lessons/ruby-
 
 TODO:
 - Profile w/ photo
+  - generate new profile when user created
+  - allow editing of profile
+  - allow show of user profiles
+  - add link to own profile
 - User Show Page
 - mailer for welcome email
 - deploy to Heroku

@@ -19,6 +19,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     User.first(5).each do |u|
       FriendRequest.create(requester_id: u.id, receiver_id: new_user.id, status: "pending")
     end
+    new_user.profile = Profile.where(user_id: new_user.id).first_or_create do |profile|
+      profile.user_id = new_user.id
+      profile.bio = ""
+    end
   end
 
   # GET /resource/edit

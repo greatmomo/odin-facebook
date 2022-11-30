@@ -12,6 +12,10 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.name = auth.info.name
       user.password = Devise.friendly_token[0,20]
+      user.profile = Profile.where(user_id: user.id).first_or_create do |profile|
+        profile.user_id = user.id
+        profile.bio = ""
+      end
     end
 
     User.first(5).each do |u|
