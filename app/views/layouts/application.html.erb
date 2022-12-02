@@ -44,6 +44,13 @@
         <section class="hero is-fullheight">
           <div class="hero-body has-text-centered">
             <div class="box">
+              <% if current_user.profile.avatar.attached? %>
+                <p>
+                  <figure class="image is-128x128">
+                    <img class="is-rounded" src="<%=(url_for(current_user.profile.avatar))%>" width="500">
+                  </figure>
+                </p>
+              <% end %>
               <div class="container">
                 <table class="table">
                   <tbody>
