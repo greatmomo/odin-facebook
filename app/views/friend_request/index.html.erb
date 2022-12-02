@@ -8,7 +8,14 @@
       <% @friendRequests.each do |fr| %>
         <% if current_user == fr.receiver && fr.status != "accepted" %>
           <div class="is-flex is-justify-content-space-between is-align-content-center">
-            <div class="container"><%= fr.requester.name %></div>
+            <div class="container is-flex">
+              <% if fr.requester.profile.avatar.attached? %>
+                <figure class="image is-32x32">
+                  <img class="is-rounded" src="<%=(url_for(fr.requester.profile.avatar))%>" width="500">
+                </figure>
+              <% end %>
+              <%= fr.requester.name %>
+            </div>
             <%= button_to delete_friend_request_path(fr),
                         method: :delete,
                         class: 'button is-ghost',
