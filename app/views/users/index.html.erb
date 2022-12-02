@@ -32,7 +32,16 @@
                 <% if current_user.requestStatus(user) == "pending" %>
                   <tr>
                     <td>
-                      <div class="span"><%= user.name %></div>
+                      <% if user.profile.avatar.attached? %>
+                        <figure class="image is-32x32">
+                          <img class="is-rounded" src="<%=(url_for(user.profile.avatar))%>" width="500">
+                        </figure>
+                      <% end %>
+                    </td>
+                    <td>
+                      <div class="span">
+                        <%= user.name %>
+                      </div>
                     </td>
           
                     <td>
@@ -47,7 +56,16 @@
                 <% else %>
                   <tr>
                     <td>
-                      <div class="span"><%= user.name %></div>
+                      <% if user.profile.avatar.attached? %>
+                        <figure class="image is-32x32">
+                          <img class="is-rounded" src="<%=(url_for(user.profile.avatar))%>" width="500">
+                        </figure>
+                      <% end %>
+                    </td>
+                    <td>
+                      <div class="span">
+                        <%= user.name %>
+                      </div>
                     </td>
           
                     <td>

@@ -10,7 +10,12 @@
           <% time_diff = Time.now - post.created_at %>
           <div class="box is-flex is-flex-direction-column">
             <div class="is-flex is-justify-content-space-between">
-              <div class="label">
+              <div class="label is-flex">
+                <% if user.profile.avatar.attached? %>
+                  <figure class="image is-32x32">
+                    <img class="is-rounded" src="<%=(url_for(user.profile.avatar))%>" width="500">
+                  </figure>
+                <% end %>
                 <%= user.name %>:
               </div>
               <div class="label">
@@ -50,7 +55,12 @@
                <% comment_time_diff = Time.now - comment.created_at %>
                <div class="box is-flex is-flex-direction-column">
                  <div class="is-flex is-justify-content-space-between">
-                   <div class="label">
+                   <div class="label is-flex">
+                      <% if comment_user.profile.avatar.attached? %>
+                        <figure class="image is-32x32">
+                          <img class="is-rounded" src="<%=(url_for(comment_user.profile.avatar))%>" width="500">
+                        </figure>
+                      <% end %>
                      <%= comment_user.name %>:
                    </div>
                    <div class="label">

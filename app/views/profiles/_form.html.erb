@@ -16,6 +16,9 @@
   <div>
     <%= form.label :bio, class: "label", value: "Update your bio:" %>
     <%= form.text_area :bio, class: "textarea" %>
+
+    <%= form.label :avatar, class: "label", value: "Profile Photo" %>
+    <%= form.file_field :avatar %>
   </div>
 
   <div>

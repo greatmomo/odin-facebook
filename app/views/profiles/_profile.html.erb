@@ -1,4 +1,13 @@
 <div id="<%= dom_id profile %>">
+  <% if profile.avatar.attached? %>
+    <p>
+      <strong>Profile Picture:</strong>
+      <figure class="image is-128x128">
+        <img class="is-rounded" src="<%=(url_for(profile.avatar))%>" width="500">
+      </figure>
+    </p>
+  <% end %>
+  
   <p>
     <strong>Bio:</strong>
     <%= profile.bio %>
