@@ -3,8 +3,6 @@
 This is a facebook clone based on - https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project
 
 TODO:
-- Profile w/ photo
-  - allow show of user profiles
 - mailer for welcome email
 - deploy to Heroku
 - add-on for real emails
