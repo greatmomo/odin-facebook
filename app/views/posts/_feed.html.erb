@@ -12,11 +12,19 @@
             <div class="is-flex is-justify-content-space-between">
               <div class="label is-flex">
                 <% if user.profile.avatar.attached? %>
+                  <%= button_to user_profile_path(user_id: user, id: user.profile.id),
+                                method: :get, class: 'button is-ghost', params: { post_id: post.id } do %>
+                    <figure class="image is-32x32">
+                      <img class="is-rounded" src="<%=(url_for(user.profile.avatar))%>" width="500">
+                    </figure>
+                  <% end %>
+                <% end %>
+                <%= button_to user_profile_path(user_id: user, id: user.profile.id),
+                              method: :get, class: 'button is-ghost', params: { post_id: post.id } do %>
                   <figure class="image is-32x32">
-                    <img class="is-rounded" src="<%=(url_for(user.profile.avatar))%>" width="500">
+                    <%= user.name %>:
                   </figure>
                 <% end %>
-                <%= user.name %>:
               </div>
               <div class="label">
                 <% if time_diff < 3600 %> 
@@ -57,11 +65,19 @@
                  <div class="is-flex is-justify-content-space-between">
                    <div class="label is-flex">
                       <% if comment_user.profile.avatar.attached? %>
+                        <%= button_to user_profile_path(user_id: comment_user, id: comment_user.profile.id),
+                                      method: :get, class: 'button is-ghost', params: { post_id: post.id } do %>
+                          <figure class="image is-32x32">
+                            <img class="is-rounded" src="<%=(url_for(comment_user.profile.avatar))%>" width="500">
+                          </figure>
+                        <% end %>
+                      <% end %>
+                      <%= button_to user_profile_path(user_id: comment_user, id: comment_user.profile.id),
+                                    method: :get, class: 'button is-ghost', params: { post_id: post.id } do %>
                         <figure class="image is-32x32">
-                          <img class="is-rounded" src="<%=(url_for(comment_user.profile.avatar))%>" width="500">
+                          <%= comment_user.name %>:
                         </figure>
                       <% end %>
-                     <%= comment_user.name %>:
                    </div>
                    <div class="label">
                      <% if comment_time_diff < 3600 %> 

@@ -5,7 +5,6 @@ This is a facebook clone based on - https://www.theodinproject.com/lessons/ruby-
 TODO:
 - Profile w/ photo
   - allow show of user profiles
-  - add link to own profile
 - mailer for welcome email
 - deploy to Heroku
 - add-on for real emails

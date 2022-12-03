@@ -1,7 +1,7 @@
 <%# loop across all friend requests and show them with variable friend request buttons %>
 
 
-<div class="column is-3 is-offset-4">
+<div class="column is-4 is-offset-4">
   <div class="box">
     <table class="table">
       <thead>Friend Requests</thead>
@@ -10,11 +10,17 @@
           <div class="is-flex is-justify-content-space-between is-align-content-center">
             <div class="container is-flex">
               <% if fr.requester.profile.avatar.attached? %>
-                <figure class="image is-32x32">
-                  <img class="is-rounded" src="<%=(url_for(fr.requester.profile.avatar))%>" width="500">
-                </figure>
+                <%= button_to user_profile_path(user_id: fr.requester, id: fr.requester.profile.id),
+                            method: :get, class: 'button is-ghost' do %>
+                  <figure class="image is-32x32">
+                    <img class="is-rounded" src="<%=(url_for(fr.requester.profile.avatar))%>" width="500">
+                  </figure>
+                <% end %>
               <% end %>
-              <%= fr.requester.name %>
+              <%= button_to user_profile_path(user_id: fr.requester, id: fr.requester.profile.id),
+                            method: :get, class: 'button is-ghost' do %>
+                <%= fr.requester.name %>
+              <% end %>
             </div>
             <%= button_to delete_friend_request_path(fr),
                         method: :delete,
