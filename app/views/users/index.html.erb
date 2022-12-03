@@ -1,7 +1,7 @@
 <%# loop across all users and show them with variable friend request buttons %>
 
 
-<div class="column is-2 is-offset-5">
+<div class="column is-4 is-offset-4">
   <div class="box">
     <table class="table">
       <% if params[:mode] == "accepted" %>
@@ -17,8 +17,25 @@
                 <% if current_user.requestStatus(user) == "accepted" %>
                 <tr>
                   <td>
-                    <div class="span"><%= user.name %></div>
-                  </td>
+                      <% if user.profile.avatar.attached? %>
+                        <%= button_to user_profile_path(user_id: user, id: user.profile.id),
+                                      method: :get, class: 'button is-ghost' do %>
+                          <figure class="image is-32x32">
+                            <figure class="image is-32x32">
+                              <img class="is-rounded" src="<%=(url_for(user.profile.avatar))%>" width="500">
+                            </figure>
+                          </figure>
+                        <% end %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <div class="span">
+                        <%= button_to user_profile_path(user_id: user, id: user.profile.id),
+                                      method: :get, class: 'button is-ghost' do %>
+                          <%= user.name %>
+                        <% end %>
+                      </div>
+                    </td>
           
                   <td>
                     <span class="icon">
@@ -33,14 +50,22 @@
                   <tr>
                     <td>
                       <% if user.profile.avatar.attached? %>
-                        <figure class="image is-32x32">
-                          <img class="is-rounded" src="<%=(url_for(user.profile.avatar))%>" width="500">
-                        </figure>
+                        <%= button_to user_profile_path(user_id: user, id: user.profile.id),
+                                      method: :get, class: 'button is-ghost' do %>
+                          <figure class="image is-32x32">
+                            <figure class="image is-32x32">
+                              <img class="is-rounded" src="<%=(url_for(user.profile.avatar))%>" width="500">
+                            </figure>
+                          </figure>
+                        <% end %>
                       <% end %>
                     </td>
                     <td>
                       <div class="span">
-                        <%= user.name %>
+                        <%= button_to user_profile_path(user_id: user, id: user.profile.id),
+                                      method: :get, class: 'button is-ghost' do %>
+                          <%= user.name %>
+                        <% end %>
                       </div>
                     </td>
           
@@ -57,14 +82,22 @@
                   <tr>
                     <td>
                       <% if user.profile.avatar.attached? %>
-                        <figure class="image is-32x32">
-                          <img class="is-rounded" src="<%=(url_for(user.profile.avatar))%>" width="500">
-                        </figure>
+                        <%= button_to user_profile_path(user_id: user, id: user.profile.id),
+                                      method: :get, class: 'button is-ghost' do %>
+                          <figure class="image is-32x32">
+                            <figure class="image is-32x32">
+                              <img class="is-rounded" src="<%=(url_for(user.profile.avatar))%>" width="500">
+                            </figure>
+                          </figure>
+                        <% end %>
                       <% end %>
                     </td>
                     <td>
                       <div class="span">
-                        <%= user.name %>
+                        <%= button_to user_profile_path(user_id: user, id: user.profile.id),
+                                      method: :get, class: 'button is-ghost' do %>
+                          <%= user.name %>
+                        <% end %>
                       </div>
                     </td>
           
