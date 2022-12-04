@@ -23,6 +23,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       profile.user_id = new_user.id
       profile.bio = ""
     end
+
+    UserMailer.with(user: new_user).welcome_email.deliver_later
   end
 
   # GET /resource/edit

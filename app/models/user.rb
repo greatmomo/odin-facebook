@@ -26,6 +26,8 @@ class User < ApplicationRecord
       end
     end
 
+    UserMailer.with(user: new_user).welcome_email.deliver_later
+
     new_user
   end
 
