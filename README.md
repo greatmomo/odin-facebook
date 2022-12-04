@@ -4,6 +4,7 @@ This is a facebook clone based on - https://www.theodinproject.com/lessons/ruby-
 
 TODO:
 - mailer for welcome email???
+  - undefined method 'login'?
 - deploy to Heroku
 - add-on for real emails
 (optional)
