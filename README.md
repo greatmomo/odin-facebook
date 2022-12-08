@@ -3,9 +3,7 @@
 This is a facebook clone based on - https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project
 
 TODO:
-- mailer for welcome email???
-  - undefined method 'login'?
-- deploy to Heroku
+- deploy to ??
 - add-on for real emails
 (optional)
 - Make posts allow images
